@@ -55,7 +55,7 @@ void findMaxVal(int result[], int num[][NUM_COLS], int rows, int cols)
     for(int i = 0; i < NUM_ROWS; i++){
         for(int j = 0; j < NUM_COLS; j++){
             currval = num[i][j];
-            if((i == 0) || maxval < currval){
+            if(maxval < currval){
                 maxval = currval; maxrow = i;
             }
         }
