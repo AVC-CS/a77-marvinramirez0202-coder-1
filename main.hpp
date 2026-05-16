@@ -16,31 +16,30 @@ void findMaxVal(int[], int[][NUM_COLS], int, int);
 void findMaxSum(int result[], int num[][NUM_COLS], int rows, int cols)
 {
     // TODO: find the row whose sum is the largest, copy that row into result.
-    int maxsum, maxrow;
-    for(int i = 0; i < NUM_ROWS; i++){
+    int maxsum = 0, maxrow = 0;
+    for(int i = 0; i < rows; i++){
         int total = 0;
-        for(int j = 0; j < NUM_COLS; j++){
+        for(int j = 0; j < cols; j++){
             total += num[i][j];
             if((i == 0) || maxsum < total){
                 maxsum = total; maxrow = i;
             }
             
         }
-    }
-    for(int j = 0; j < NUM_COLS; j++){
+        for(int j = 0; j < cols; j++){
         result[j] = num[maxrow][j];
+    }
     }
 }
 void findMaxElm(int result[], int num[][NUM_COLS], int rows, int cols)
 {
     // TODO: for each row, store the maximum element of that row in result[i].
     int maxelm, currval;
-    for(int i = 0; i < NUM_ROWS; i++){
+    for(int i = 0; i < rows; i++){
         maxelm = num[i][0];
-        for(int j = 0; j < NUM_COLS; j++){
-            currval = num[i][j];
-            if(maxelm < currval)
-                maxelm = currval;
+        for(int j = 1; j < cols; j++){
+            if(maxelm < num[i][j])
+                maxelm = num[i][j];
                 result[i] = maxelm;
         }
     }
@@ -50,18 +49,18 @@ void findMaxElm(int result[], int num[][NUM_COLS], int rows, int cols)
 void findMaxVal(int result[], int num[][NUM_COLS], int rows, int cols)
 {
     // TODO: find the cell (r,c) holding the global maximum value; copy row r.
-    int maxval, maxrow, currval;
+    int maxval, maxrow;
     maxval = num[0][0];
-    for(int i = 0; i < NUM_ROWS; i++){
-        for(int j = 0; j < NUM_COLS; j++){
-            currval = num[i][j];
-            if(maxval < currval){
-                maxval = currval; maxrow = i;
+    maxrow = 0;
+    for(int i = 0; i < rows; i++){
+        for(int j = 0; j < cols; j++){
+            if(maxval < num[i][j]){
+                maxval = num[i][j]; maxrow = i;
             }
         }
     }
 
-    for(int j = 0; j < NUM_COLS; j++){
+    for(int j = 0; j < cols; j++){
         result[j] = num[maxrow][j];
     }
 
